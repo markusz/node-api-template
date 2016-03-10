@@ -1,0 +1,53 @@
+{
+  "name": "node-api-template",
+  "version": "0.0.1",
+  "description": "A collection of (subjective) best (good) practices for creating WebAPIs in node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markusz/node-api-template"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api",
+    "template"
+  ],
+  "homepage": "https://github.com/markusz/node-api-template",
+  "private": false,
+  "engines": {
+    "node": "4.2.3"
+  },
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "REMOTE_APP_URL=localhost:3000 mocha --recursive test/",
+    "test-unit": "mocha --recursive test/unit",
+    "test-integration": "REMOTE_APP_URL=localhost:3000 mocha --recursive test/integration",
+    "test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit -- --recursive",
+    "lint": "eslint src/ test/ ",
+    "pre-push": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "chai": "3.4.x",
+    "sinon-chai": "2.8.x",
+    "eslint": "1.10.x",
+    "eslint-config-airbnb": "1.0.x",
+    "mocha": "2.3.x",
+    "istanbul": "0.4.x",
+    "sinon": "1.17.x"
+  },
+  "dependencies": {
+    "app-root-dir": "1.0.x",
+    "async": "1.5.x",
+    "body-parser": "1.12.x",
+    "co": "^4.6.0",
+    "express": "4.13.x",
+    "json-schema-ref-parser": "1.4.x",
+    "lodash": "3.10.x",
+    "mongoose": "4.2.x",
+    "superagent": "^1.4.0",
+    "supertest": "^1.1.0",
+    "swagger-tools": "0.9.x",
+    "winston": "2.1.x"
+  }
+}

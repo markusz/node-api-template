@@ -1,0 +1,9 @@
+instrumentation:
+    root: ./src
+    excludes: [
+     'util/test-util.js',
+     'util/mongoose-util.js',
+     'src/app.js'
+     ]
+    include-all-sources: true
+

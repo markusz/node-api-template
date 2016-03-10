@@ -1,0 +1,61 @@
+{
+  "*": {
+    "transports": [
+      {
+        "type": "Console",
+        "options": {
+          "level": "debug",
+          "colorize": true,
+          "timestamp": true,
+          "prettyPrint": true
+        }
+      }
+    ]
+  },
+  "development": {
+    "transports": [
+    ]
+  },
+  "integration": {
+    "transports": [
+      {
+        "type": "Console",
+        "options": {
+          "level": "debug",
+          "colorize": true,
+          "timestamp": true,
+          "prettyPrint": true
+        }
+      },
+      {
+        "type": "DailyRotateFile",
+        "options": {
+          "level": "debug",
+          "filename": "log/service.log"
+        }
+      }
+    ]
+  },
+  "staging": {
+    "transports": [
+      {
+        "type": "File",
+        "options": {
+          "level": "info",
+          "filename": "log/service.log"
+        }
+      }
+    ]
+  },
+  "production": {
+    "transports": [
+      {
+        "type": "File",
+        "options": {
+          "level": "info",
+          "filename": "log/service.log"
+        }
+      }
+    ]
+  }
+}

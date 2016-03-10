@@ -1,0 +1,21 @@
+{
+  "*": {
+    "swagger": {
+      "apiDocReference": "/doc/api.json"
+    },
+    "useAuth": true
+  },
+  "development": {
+    "useAuth": false,
+    "port": 3000
+  },
+  "integration": {
+    "port": 3000
+  },
+  "staging": {
+    "port": 3000
+  },
+  "production": {
+    "port": 3000
+  }
+}

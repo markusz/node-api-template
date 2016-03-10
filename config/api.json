@@ -1,0 +1,178 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "produces": [
+    "application/json"
+  ],
+  "info": {
+    "version": "1.0",
+    "title": "node.js Service Blueprint",
+    "description": "A collection of (subjective) best (good) practices for creating WebAPIs in node.js",
+    "contact": {
+      "name": "Markus Ziller",
+      "email": "contact[a.t]markusziller.de"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "birthYear": {
+          "type": "integer",
+          "required": true
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users/v1": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Gets all users",
+        "responses": {
+          "200": {
+            "description": "Users successfully retrieved",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "name": "usertoken",
+            "in": "header",
+            "required": true,
+            "description": "The usertoken to authenticate the user. Only 42 is allowed in this example",
+            "type": "string",
+            "default": "42"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Adds a user",
+        "responses": {
+          "201": {
+            "description": "Users successfully created",
+            "type": "integer"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "The user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "usertoken",
+            "in": "header",
+            "required": true,
+            "description": "The usertoken to authenticate the user. Only 42 is allowed in this example",
+            "type": "string",
+            "default": "42"
+          }
+        ]
+      }
+    },
+    "/users/v1/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "The GET route for a certain user",
+        "responses": {
+          "200": {
+            "description": "User successfully retrieved",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the user",
+            "type": "string"
+          },
+          {
+            "name": "usertoken",
+            "in": "header",
+            "required": true,
+            "description": "The usertoken to authenticate the user. Only 42 is allowed in this example",
+            "type": "string",
+            "default": "42"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "The DELETE route for a certain user",
+        "responses": {
+          "201": {
+            "description": "User successfully deleted",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "The id of the user",
+            "type": "string"
+          },
+          {
+            "name": "usertoken",
+            "in": "header",
+            "required": true,
+            "description": "The usertoken to authenticate the user. Only 42 is allowed in this example",
+            "type": "string",
+            "default": "42"
+          }
+        ]
+      }
+    }
+  }
+}

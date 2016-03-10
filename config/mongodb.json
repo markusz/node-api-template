@@ -1,0 +1,28 @@
+{
+  "*": {
+    "uri": "mongodb://localhost",
+    "config": {}
+  },
+  "development": {
+    "uri": "mongodb://192.168.99.100/service",
+    "config": {}
+  },
+  "integration": {
+    "uri": "mongodb://..",
+    "config": {
+      "user": "user",
+      "pass": "pass"
+    }
+  },
+  "staging": {
+    "uri": "TBD",
+    "config": {}
+  },
+  "production": {
+    "uri": "TBD",
+    "config": {
+      "user": "TBD",
+      "pass": "TBD"
+    }
+  }
+}
