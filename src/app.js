@@ -27,7 +27,7 @@ const MongooseUtil = require('./utils/mongoose-util').inject(mongoLogger);
 const ApplicationUtil = require('./utils/application-util').inject(serviceConfig, LoggerFactory);
 
 const startupSequence = function*() {
-  apiLogger.info('Initiating startup sequence in environment %s', process.env.NODE_ENV);
+  apiLogger.info('Initiating startup sequence in environment %s', ENVIRONMENT);
   const port = process.env.PORT || serviceConfig.port;
 
   //yield MongooseUtil.connect(mongoConfig.uri, mongoConfig.config, callback, apiLogger);

@@ -18,12 +18,10 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "required": true
+          "type": "string"
         },
         "birthYear": {
-          "type": "integer",
-          "required": true
+          "type": "integer"
         }
       }
     }

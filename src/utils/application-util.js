@@ -2,12 +2,12 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
-const JSONRefParser = require('json-schema-ref-parser');
-const SwaggerTools = require('swagger-tools');
 
 const UserRouter = require('../routes/users');
 
 module.exports.inject = function(config, LoggerFactory) {
+  const apiLogger = LoggerFactory.getCategoryLogger('API');
+
   return class RoutingUtil {
     static makeApp() {
       const app = express();
@@ -36,20 +36,14 @@ module.exports.inject = function(config, LoggerFactory) {
     }
 
     static attachSwaggerToApp(app, swaggerConfig) {
-      return new Promise((resolve, reject) => {
-        JSONRefParser.dereference(swaggerConfig, function(err, schema) {
-          if (err) {
-            console.log('err:',err);
-            return reject(err);
-          }
+      return new Promise(resolve => {
+        swaggerConfig.info.version = require('../../package.json').version;
+        app.use('/api-docs', (req, res) => res.send(swaggerConfig));
 
-          schema.info.version = require('../../package.json').version;
-          SwaggerTools.initializeMiddleware(swaggerConfig, function(middleware) {
-            app.use(middleware.swaggerUi());
-            resolve();
-          });
-        });
+        // http://localhost:3000/docs/?url=/api-docs
+        app.use('/docs', express.static(__dirname + '/../../node_modules/swagger-ui/dist/'));
+        resolve();
       });
     }
-  }
+  };
 };
