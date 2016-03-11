@@ -1,10 +1,7 @@
 'use strict';
 
-const async = require('async');
-const express = require('express');
-const fs = require('fs');
+/* eslint no-unused-vars: 0 */
 const co = require('co');
-const winston = require('winston');
 
 /* ENV variables */
 const MONGO_URL = process.env.REMOTE_MONGO_URL;
@@ -30,7 +27,7 @@ const startupSequence = function*() {
   apiLogger.info('Initiating startup sequence in environment %s', ENVIRONMENT);
   const port = process.env.PORT || serviceConfig.port;
 
-  //yield MongooseUtil.connect(mongoConfig.uri, mongoConfig.config, callback, apiLogger);
+  // yield MongooseUtil.connect(mongoConfig.uri, mongoConfig.config, callback, apiLogger);
 
   const app = ApplicationUtil.makeApp();
 

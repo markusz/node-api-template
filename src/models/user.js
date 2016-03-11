@@ -5,7 +5,7 @@ module.exports.inject = function(lodash) {
     constructor(name, birthYear) {
       this.name = name;
       this.birthYear = birthYear;
-      this.age = (2015 - this.birthYear);
+      this.age = (2016 - this.birthYear);
     }
 
     // static function
@@ -22,5 +22,5 @@ module.exports.inject = function(lodash) {
     ageInTheYearN(year) {
       return year - this.birthYear;
     }
-  }
+  };
 };

@@ -23,6 +23,6 @@ module.exports.inject = logger => {
       }
 
       return mergedConfig;
-    };
+    }
   };
 };

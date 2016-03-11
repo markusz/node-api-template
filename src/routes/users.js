@@ -2,7 +2,7 @@
 
 module.exports.inject = function(LogUtil) {
   const userLogger = LogUtil.getCategoryLogger('/users');
-// const UserModel = require('../models/user')(lodash);
+  // const UserModel = require('../models/user')(lodash);
 
   const UserController = require('./users/v1/index').inject(/* UserModel, */ userLogger);
 

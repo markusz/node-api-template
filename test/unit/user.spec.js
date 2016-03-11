@@ -39,7 +39,7 @@ describe('user.js', function() {
   describe('Constructor', function() {
     it('sets the calculated age as a instance attribute', function() {
       expect(user.age).to.be.ok;
-      expect(user.age).to.eql(73);
+      expect(user.age).to.eql(74);
     });
 
     it('sets name and birthYear as instance attributes', function() {
@@ -63,7 +63,7 @@ describe('user.js', function() {
   describe('.ageNextYear', function() {
     it('is a getter, not a function', function() {
       assert.isNotFunction(user.ageNextYear);
-      expect(user.ageNextYear).to.eql(74);
+      expect(user.ageNextYear).to.eql(75);
     });
   });
 

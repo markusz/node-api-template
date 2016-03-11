@@ -16,3 +16,12 @@ module.exports.inject = function(config) {
     }
   };
 };
+
+
+module.exports.silent = function() {
+  return class {
+    static getCategoryLogger() {
+      return new (winston.Logger)();
+    }
+  };
+};

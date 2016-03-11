@@ -8,7 +8,7 @@ const UserRouter = require('../routes/users');
 module.exports.inject = function(config, LoggerFactory) {
   const apiLogger = LoggerFactory.getCategoryLogger('API');
 
-  return class RoutingUtil {
+  return class ApplicationUtil {
     static makeApp() {
       const app = express();
 
