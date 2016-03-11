@@ -5,7 +5,7 @@ const winston = require('winston');
 module.exports.inject = function(config) {
   return class {
     static getCategoryLogger(category) {
-      const logger = new (winston.Logger)();
+      const logger = new winston.Logger();
       if (config && config.transports) {
         for (const transport of config.transports) {
           transport.options.label = category;
@@ -21,7 +21,7 @@ module.exports.inject = function(config) {
 module.exports.silent = function() {
   return class {
     static getCategoryLogger() {
-      return new (winston.Logger)();
+      return new winston.Logger();
     }
   };
 };

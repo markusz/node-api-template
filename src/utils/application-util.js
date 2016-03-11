@@ -38,10 +38,13 @@ module.exports.inject = function(config, LoggerFactory) {
     static attachSwaggerToApp(app, swaggerConfig) {
       return new Promise(resolve => {
         swaggerConfig.info.version = require('../../package.json').version;
-        app.use('/api-docs', (req, res) => res.send(swaggerConfig));
+        const API_DOCS_PATH = '/api-docs';
+
+        app.use(API_DOCS_PATH, (req, res) => res.send(swaggerConfig));
+        app.use('/docs', express.static(__dirname + '/../../node_modules/swagger-ui/dist/'));
 
         // http://localhost:3000/docs/?url=/api-docs
-        app.use('/docs', express.static(__dirname + '/../../node_modules/swagger-ui/dist/'));
+        apiLogger.info(`Swagger is available under http://localhost:3000/docs/?url=${API_DOCS_PATH}`);
         resolve();
       });
     }

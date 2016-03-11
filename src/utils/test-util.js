@@ -6,7 +6,6 @@ const ApplicationUtil = require('../utils/application-util');
 
 const serviceConfig = ConfigurationUtil.getConfigForCurrentEnvironment('config/service.json');
 
-
 module.exports.inject = function() {
   class TestUtil {
     static getApp() {
